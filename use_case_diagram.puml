@@ -1,0 +1,54 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Адміністратор" as Admin
+actor "Організатор турніру" as Organizer
+actor "Аналітик" as Analyst
+actor "Представник команди" as TeamRep
+actor "Глядач" as Viewer
+
+rectangle "Інформаційна система статистичного аналізу футбольних турнірів" {
+  usecase "Керування\nкористувачами" as UC1
+  usecase "Керування\nправами доступу" as UC2
+  usecase "Створення\nтурніру" as UC3
+  usecase "Реєстрація\nкоманди" as UC4
+  usecase "Формування\nкалендаря" as UC5
+  usecase "Внесення\nрезультату матчу" as UC6
+  usecase "Формування\nтурнірної таблиці" as UC7
+  usecase "Перегляд\nстатистики" as UC8
+  usecase "Порівняння\nкоманд" as UC9
+  usecase "Сортування та\nфільтрація" as UC10
+  usecase "Формування\nзвіту" as UC11
+  usecase "Перегляд даних\nкоманди" as UC12
+  usecase "Перегляд\nрозкладу" as UC13
+  usecase "Перегляд результатів\nматчів" as UC14
+  usecase "Перегляд турнірної\nтаблиці" as UC15
+}
+
+Admin --> UC1
+Admin --> UC2
+
+Organizer --> UC3
+Organizer --> UC4
+Organizer --> UC5
+Organizer --> UC6
+Organizer --> UC7
+
+Analyst --> UC8
+Analyst --> UC9
+Analyst --> UC10
+Analyst --> UC11
+
+TeamRep --> UC12
+TeamRep --> UC13
+TeamRep --> UC14
+TeamRep --> UC15
+
+Viewer --> UC13
+Viewer --> UC14
+Viewer --> UC15
+
+UC6 .> UC7 : <<include>>
+UC8 .> UC10 : <<extend>>
+@enduml
